@@ -11,14 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/logo.png')}}">
-   
-    
-
 
      <!-- Custom CSS -->
      <link href="{{ asset('assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
-     <link href="{{ asset('assets/libs/jquery-steps/jquery.steps.css')}}" rel="stylesheet">
-     <link href="{{ asset('assets/libs/jquery-steps/steps.css')}}" rel="stylesheet">
+ 
      <link href="{{ asset('dist/css/style.min.css')}}" rel="stylesheet">
 
 
@@ -31,10 +27,25 @@
      <link rel="stylesheet" type="text/css"
          href="{{ asset('assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
      <link rel="stylesheet" type="text/css" href="{{ asset('assets/libs/quill/dist/quill.snow.css')}}">
+
+     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css')}}">
+
     
 </head>
 
 <body>
+    <style>
+        
+.error {
+  border-color: #f62d51;
+  color: #f62d51
+}
+
+.success {
+  border-color: #2df6a2;
+    color: #2df6a2
+}
+    </style>
     @include('layouts.dashboard.preloader')
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -183,28 +194,34 @@ $( document ).ready(function() {
      
    });    
    
+/**
+*/
+
 
 
    /**
     * form validation user 
    */
 
+
 var form_user = $("#addUserForm");
 form_user.validate({
-    errorPlacement: function errorPlacement(error, element) { element.before(error); },
-   
+    errorPlacement: function errorPlacement(error,element) {element.after(error); },
+    errorPlacement: function errorPlacement(error,element) {
+        if(element.prop('type') === 'checkbox' || element.prop('type') === 'radio' ){
+            error.insertAfter(element.parent());
+        }else {
+            error.insertAfter(element)
+        }
+    },
    rules: {
        firstname: {
            required: true,
            minlength: 3,
-
-
        },
        lastname: {
            required: true,
            minlength: 3,
-
-
        },
        
        email: {
@@ -224,7 +241,19 @@ form_user.validate({
             required: true,
            },
 
-   }
+        },
+        errorClass:"help-inline",
+	    errorElement: "span",
+	   
+                highlight: function (element) {
+                $(element).parent().addClass('error')
+            },
+            unhighlight: function (element) {
+                $(element).parent().removeClass('error')
+
+            },
+   
+
 });
 
    
@@ -276,7 +305,15 @@ form_user.validate({
              required: true,
              minlength: 2
             }
-    }
+    },
+    
+    highlight: function (element) {
+                $(element).parent().addClass('error')
+            },
+            unhighlight: function (element) {
+                $(element).parent().removeClass('error')
+
+            },
 });
 
   });   

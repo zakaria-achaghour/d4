@@ -1,16 +1,16 @@
 <div class="form-group row">
-    <label for="fname"
+    <label for="firstname"
         class="col-sm-3 text-end control-label col-form-label">First Name</label>
     <div class="col-sm-9">
-        <input type="text" class="form-control" name="firstname" id="fname"
+        <input type="text" class="form-control" name="firstname" id="firstname"
             placeholder="First Name Here"  value="{{ old('firstname', $user->firstname ?? null) }}">
     </div>
 </div>
 <div class="form-group row">
-    <label for="lname" class="col-sm-3 text-end control-label col-form-label">Last
+    <label for="lastname" class="col-sm-3 text-end control-label col-form-label">Last
         Name</label>
     <div class="col-sm-9">
-        <input type="text" class="form-control" name="lastname" id="lname"
+        <input type="text" class="form-control" name="lastname" id="lastname"
             placeholder="Last Name Here"  value="{{ old('lastname', $user->lastname ?? null) }}">
     </div>
 </div>
@@ -33,19 +33,25 @@
             </div>
         </div>
 
+       
 <div class="form-group row">
     <label class="col-md-3">Gender</label>
-    <div class="col-md-9">
-        <div class="form-check">
-            <input type="radio" class="form-check-input"
-                id="gender" name="gender" value="male" required  {{ old('gender') == 'male' ? 'checked' : '' }}>
-            <label class="form-check-label mb-0" for="gender"  >Male</label>
+    <div class="col-sm-9">
+        <div class="form-check form-check-inline">
+            <label class="form-check-label mb-0" for="gender"  >
+            <input type="radio" class="form-check-input form-control"
+                id="gender" name="gender" value="male" required checked {{ old('gender') == 'male' ? 'checked' : '' }}>
+                Male
+            </label>
         </div>
-        <div class="form-check">
-            <input type="radio" class="form-check-input"
+        <div class="form-check form-check-inline">
+            <label class="form-check-label mb-0" for="gender2">
+
+            <input type="radio" class="form-check-input form-control"
                 id="gender2" name="gender" value="femmel" required {{ old('gender') == 'femmel' ? 'checked' : '' }}>
-            <label class="form-check-label mb-0" for="gender2">Femmel</label>
-        </div>
+        
+                Femmel</label>        
+            </div>
        
     </div>
 </div>
@@ -53,8 +59,8 @@
 
 <div class="form-group row">
     <label class="col-md-3 mt-3" for="role">Select Role</label>
-    <div class="col-md-9">
-        <select class="select2 form-select shadow-none" id="role" name="role" {{ (! empty(old('role')) ? 'selected' : '') }}
+    <div class="col-sm-9">
+        <select class="select2 form-select shadow-none form-control" id="role" name="role" {{ (! empty(old('role')) ? 'selected' : '') }}
             style="width: 100%; height:36px;"  >
             <option>-------------------------</option>
                 <option  value="role 1" >Role 1</option>
