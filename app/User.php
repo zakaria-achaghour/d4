@@ -13,6 +13,18 @@ class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
 
+    public const ROLES = [
+        'Admin' => 'Admin',
+        'Role1' => 'Role 1',
+        'Role1' => 'Role 1',
+        'Role1' => 'Role 1'
+
+    ];
+    public const LOCALES = [
+        'en' => 'English',
+        'fr' => 'French'
+    ];
+
     /**
      * The attributes that are mass assignable.
      *

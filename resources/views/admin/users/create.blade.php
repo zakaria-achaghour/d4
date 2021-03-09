@@ -7,13 +7,13 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Users</h4>
+                        <h4 class="page-title">{{__('Add User')}}</h4>
                         <div class="ml-auto">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('dash') }}">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('users.index') }}">Users</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a>Add User</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('dash') }}">{{__('Dashboard')}}</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('users.index') }}">{{__('Users')}}</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a>{{__('Add User')}}</a></li>
 
                                 </ol>
                             </nav>
@@ -40,13 +40,11 @@
                 <div class="border-top">
                     <div class="card-body col-md-8 mx-auto">
                         <div class="row ">
-                            <div class="col-md-6 col-sm-12 mb-1">
-                                <button type="submit" style="width: 100%" class="btn btn-success text-white">Save</button>
+                            <div class="col-md-6 col-sm-12  mx-auto">
+                                <button type="submit" style="width: 100%" class="btn btn-outline-success">{{__('Save')}}</button>
 
                             </div>
-                            <div class="col-md-6 col-sm-12">
-                                <button type="submit" style="width: 100%" class="btn btn-primary">Reset</button>
-                            </div>
+                           
                                     
                         </div>
                       

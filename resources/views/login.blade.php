@@ -83,7 +83,7 @@
                     
                                 <div class="form-group row">
                                     <div class="col-md-6 mx-auto">
-                                        <button class="btn btn-success mx-auto" style="width: 100%" type="submit">Login</button>
+                                        <button class="btn btn-success mx-auto" style="width: 100%" type="submit">{{ __('Login') }}</button>
 
                                     </div>
                                     

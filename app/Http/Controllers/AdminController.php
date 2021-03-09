@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\MatchOldPassword;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,9 +51,10 @@ class AdminController extends Controller
      * 
      */
 
-    public function settings(){
+     // method return view
+    public function edit_profile(){
         
-        return view('settings',['user'=> Auth::user()]);
+        return view('edit_profile',['user'=> Auth::user()]);
     }
 
     public function checkPassword(Request $request){
@@ -68,7 +70,19 @@ class AdminController extends Controller
         }
     }
 
+
+    // methods post 
     public function profile_edit(Request $request ){
+
+        $request->validate([
+            'firstname' => 'required|min:3',
+            'lastname' => 'required|min:3',
+            'email' => 'required|email',
+            'username' =>'required|min:3',
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password'=> 'required|min:8',
+            'confirm_password' => 'required|same:new_password'
+        ]);
       
       $user = User::findOrFail(Auth::id());
         $data = $request->all();
@@ -78,12 +92,31 @@ class AdminController extends Controller
             if( $data['new_password'] === $data['confirm_password']){
                 $user->password = Hash::make($data['new_password']);
                 $user->save();
-               return redirect()->route('settings')->with(['success' => 'Password change successfuly']);
+               return redirect()->route('edit-profile')->with(['success' => 'Password change successfuly']);
             }
-            return redirect()->route('settings')->with(['error' => 'New password not equal to confirm password']);
+            return redirect()->route('edit-profile')->with(['error' => 'New password not equal to confirm password']);
           
         }
-        return redirect()->route('settings')->with(['error' => 'current password not correct']);
+        return redirect()->route('edit-profile')->with(['error' => 'current password not correct']);
+
+
+    }
+
+
+
+
+// change language
+    public function settings_get(){
+        return view('settings',['user'=> Auth::user()]);
+
+    }
+
+    public function settings(Request $request){
+        
+       $user = User::findOrFail(Auth::id());
+       $user->locale = $request->input('locale');
+       $user->save();
+       return redirect()->route('settings')->with(['success' => 'language change successfuly']);
 
 
     }

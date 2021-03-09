@@ -1,0 +1,71 @@
+{
+    "Welcome": "Bienvenu à Laravel!",
+
+    "Add": "Ajouter",
+    "Added": "Ajouté",
+    "Updated": "Modifié",
+    "Edit": "Editer",
+    "Delete": "Supprimer",
+    "Create": "Créer",
+    "Update": "Modifier",
+    "Upload": "Monter une autre image",
+    "Save": "Enregister",
+    "Close": "Fermer",
+    "Back" : "Retour",
+
+
+    "Profile": "Profile",
+    "Edit Profile": "Editer le Profile",
+
+    "Users": "Utilisateurs",
+    "Add User": "Ajouter un utilisateur",
+    "Edit User": "Modifier l'utilisateur",
+    "List Of Users": "Liste des utilisateurs",
+
+    "Delete Confirmation": "Confirmation de suppression",
+    "Qestion Delete" : "Voulez-vous vraiment supprimer ?",
+
+
+
+
+    "Dashboard": "Accueil",
+    
+    "Register": "S'enregister",
+    "Login": "Connexion",
+    "Logout": "Déconnexion",
+    "Sign-in": "S'authentifer",
+   
+    "Current Password": "Mot de passe actuel",
+    "New Password": "Nouveau mot de passe",
+    "Confirm Password": "Confirmez le mot de passe",
+    "Role": "Rôle",
+    "Select Role": "Sélectionnez Rôle",
+    "Username": "Nom d'utilisateur",
+    "Firstname":"Prénom",
+    "Firstname Here":"Prénom ici",
+    "Lastname":"Nom",
+    "Lastname Here":"Nom ici",
+
+    "Gender":"Genre",
+    "Contact": "Contact",
+    "Name:": "Nom:",
+    "E-mail": "E-mail",
+    "Password": "Mot de passe",
+    "Remember me": "Me rappeler",
+    "Content": "Contenu",
+    "Thumbnail": "Miniature",
+    "by": "par",
+    "Title": "Titre",
+  
+    
+  
+    "Male": "Homme",
+    "Women": "Femme",
+   
+    
+    "Showing":"Affichage",
+   
+    
+    "Account Setting": "Paramètre du compte"
+    
+} 

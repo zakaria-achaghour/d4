@@ -1,72 +1,104 @@
 <div class="form-group row">
     <label for="firstname"
-        class="col-sm-3 text-end control-label col-form-label">First Name</label>
+        class="col-sm-3 text-end control-label col-form-label">{{__('Firstname')}}</label>
     <div class="col-sm-9">
-        <input type="text" class="form-control" name="firstname" id="firstname"
-            placeholder="First Name Here"  value="{{ old('firstname', $user->firstname ?? null) }}">
+        <input type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" id="firstname"
+            placeholder="{{__('Firstname Here')}}"  value="{{ old('firstname', $user->firstname ?? null) }}">
+            @error('firstname')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
 </div>
 <div class="form-group row">
-    <label for="lastname" class="col-sm-3 text-end control-label col-form-label">Last
-        Name</label>
+    <label for="lastname" class="col-sm-3 text-end control-label col-form-label">{{__('Lastname')}}</label>
     <div class="col-sm-9">
-        <input type="text" class="form-control" name="lastname" id="lastname"
-            placeholder="Last Name Here"  value="{{ old('lastname', $user->lastname ?? null) }}">
+        <input type="text" class="form-control @error('lastname') is-invalid @enderror"name="lastname" id="lastname"
+            placeholder="{{__('Lastname Here')}}"  value="{{ old('lastname', $user->lastname ?? null) }}">
+            @error('lastname')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
 </div>
 
  <div class="form-group row">
           
-    <label for="email" class="col-sm-3 text-end control-label col-form-label">Email </label>
+    <label for="email" class="col-sm-3 text-end control-label col-form-label">{{__('E-mail')}} </label>
     <div class="col-sm-9">
     <input id="email" name="email" type="text" autocomplete="false"
-     class="required email form-control"  placeholder="Email@email.com"
+     class="form-control @error('email') is-invalid @enderror"  placeholder="email@email.com"
      value="{{ old('email', $user->email ?? null) }}" >
+     @error('email')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+     @enderror
     </div>
         </div>
         <div class="form-group row">
             <label for="cono1"
-                class="col-sm-3 text-end control-label col-form-label">Contact No</label>
+                class="col-sm-3 text-end control-label col-form-label">{{__('Contact')}}</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="contact" id="cono1"
-                    placeholder="Contact No Here" value="{{ old('contact', $user->contact ?? null) }}">
+                <input type="text" class="form-control @error('contact') is-invalid @enderror" name="contact" id="cono1"
+                    placeholder="+ 212 6 ..." value="{{ old('contact', $user->contact ?? null) }}">
+                    @error('contact')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div>
 
        
 <div class="form-group row">
-    <label class="col-md-3">Gender</label>
+    <label class="col-md-3">{{__('Gender')}}</label>
     <div class="col-sm-9">
         <div class="form-check form-check-inline">
             <label class="form-check-label mb-0" for="gender"  >
-            <input type="radio" class="form-check-input form-control"
+            <input type="radio" class="form-check-input form-control @error('gender') is-invalid @enderror"
                 id="gender" name="gender" value="male" required checked {{ old('gender') == 'male' ? 'checked' : '' }}>
-                Male
+               {{__('Male')}}
             </label>
         </div>
         <div class="form-check form-check-inline">
             <label class="form-check-label mb-0" for="gender2">
 
-            <input type="radio" class="form-check-input form-control"
-                id="gender2" name="gender" value="femmel" required {{ old('gender') == 'femmel' ? 'checked' : '' }}>
+            <input type="radio" class="form-check-input form-control @error('gender') is-invalid @enderror"
+                id="gender2" name="gender" value="women" required {{ old('gender') == 'women' ? 'checked' : '' }}>
         
-                Femmel</label>        
+                {{__('Women')}}</label>        
             </div>
+
+            @error('gender')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
        
     </div>
 </div>
 
 
 <div class="form-group row">
-    <label class="col-md-3 mt-3" for="role">Select Role</label>
+    <label class="col-md-3 mt-3" for="role">{{__('Select Role')}}</label>
     <div class="col-sm-9">
-        <select class="select2 form-select shadow-none form-control" id="role" name="role" {{ (! empty(old('role')) ? 'selected' : '') }}
+        <select class="select2 form-select shadow-none form-control @error('role') is-invalid @enderror id="role" name="role"
             style="width: 100%; height:36px;"  >
-            <option>-------------------------</option>
-                <option  value="role 1" >Role 1</option>
-                <option  value="role 2" >Role 2</option>
-                <option value="role 3" >Role 3</option>
-                <option value="role 4" >Role 4</option>           
+            
+           @foreach (App\User::ROLES as $role => $label)
+           <option value=""></option>
+            <option value="{{ $role }}" {{ old('role') === $role ? 'selected':'' }} >{{ $label }}</option>
+               
+           @endforeach
+                  
         </select>
+        @error('role')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
     </div>
 </div>

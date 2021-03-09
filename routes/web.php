@@ -23,9 +23,13 @@ Route::get('/logout','AdminController@logout')->name('logout');
 
 Route::get('/admin/dashboard','AdminController@dash')->name('dash');
 
+// update profile
+Route::get('/admin/dashboard/edit-profile','AdminController@edit_profile')->name('edit-profile');
+Route::put('/admin/dashboard/edit-profile','AdminController@profile_edit')->name('profile_edit');
 
-Route::get('/admin/dashboard/settings','AdminController@settings')->name('settings');
-Route::put('/admin/dashboard/settings','AdminController@profile_edit')->name('profile_edit');
+// settings profile
+Route::get('/admin/dashboard/settings','AdminController@settings_get')->name('settings_get');
+Route::put('/admin/dashboard/settings','AdminController@settings')->name('settings');
 
 Route::post('/admin/dashboard/check-pwd','AdminController@checkPassword')->name('checkPassword');
 

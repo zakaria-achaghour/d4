@@ -41,10 +41,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'firstname' => 'required|min:3',
+            'lastname' => 'required|min:3',
+            'email' => 'required|email',
+            'contact' => 'required',
+            'gender' => 'required',
+            'role' => 'required'
+        ]);
        
         $data = $request->except(['_token']);
         $data['password'] = Hash::make('password');
-        $data['username'] = $data['lastname'][0].'.'.$data['firstname'];
+        $data['username'] = $data['firstname'][0].'.'.$data['lastname'];
         $user = User::create($data);  
         return redirect()->route('users.index')->with(['success' => 'User added']);
 
@@ -83,6 +91,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'firstname' => 'required|min:3',
+            'lastname' => 'required|min:3',
+            'email' => 'required|email',
+            'contact' => 'required',
+            'gender' => 'required',
+            'role' => 'required'
+        ]);
         
       $user = user::findOrFail($id);
       $user->firstname = $request->input('firstname');

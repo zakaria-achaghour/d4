@@ -1,0 +1,71 @@
+{
+    "Welcome": "Welcome to Laravel!",
+    
+
+    "Add": "Add",
+    "Added": "Added",
+    "Updated": "Updated",
+    "Create": "Create",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "Update": "Update",
+    "Upload": "Upload a different photo",
+    "Save": "Save",
+    "Close": "Close",
+    "Back" : "Back",
+
+    "Profile": "Profile",
+    "Edit Profile": "Edit Profile",
+
+    "Users": "Users",
+    "Add User": "Add user",
+    "Edit User": "Edit user",
+
+    "List Of Users": "List of users",
+
+
+
+    "Delete Confirmation": "Delete Confirmation",
+    "Qestion Delete": "Are you sure want to delete ?",
+
+
+    "Dashboard": "Dashboard",
+    "Register": "Register",
+    "Login": "Login",
+    "Logout": "Logout",
+    "Sign-in": "Sign-in",
+    "Remember me": "Remember me",
+    "Login!": "Login!",
+    
+    
+    "by": "by",
+   
+    "Current Password": "Current Password",
+    "New Password": "New Password",
+    "Confirm Password": "Confirm Password",
+
+    "Role": "Role",
+    "Select Role": "Select Role",
+    "Username": "Username",
+    "Firstname":"Firstname",
+    "Firstname Here":"Firstname here",
+    "Lastname":"Lastname",
+    "Lastname Here":"Lastname here",
+
+    "Gender":"Gender",
+    "Contact": "Contact",
+    "Name:": "Name:",
+    "E-mail": "E-mail",
+    "Password": "Password",
+    "Title": "Title",
+    "Content": "Content",
+    "Thumbnail": "Thumbnail",
+
+    "Male": "Male",
+    "Women": "Women",
+
+    "Showing":"Showing",
+    "Account Setting": "Account Setting"
+    
+    
+} 

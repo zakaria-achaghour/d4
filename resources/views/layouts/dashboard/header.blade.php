@@ -102,14 +102,17 @@
                   
 
                     <div class="dropdown-menu dropdown-menu-right  user-dd animated" aria-labelledby="navbarDropdow">
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{route('edit-profile')}}"><i
+                            class="fas fa-edit me-1 ms-1"></i> {{__('Edit Profile')}}</a>
 
-                     
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{route('settings')}}"><i
-                                class="ti-settings me-1 ms-1"></i> Account Setting</a>
+                                class="ti-settings me-1 ms-1"></i> {{__('Account Setting')}}</a>
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"><i
-                                class="fa fa-power-off me-1 ms-1"></i> Logout</a>
+                                class="fa fa-power-off me-1 ms-1"></i> {{__('Logout')}}</a>
                         <div class="dropdown-divider"></div>
                         
                     </div>

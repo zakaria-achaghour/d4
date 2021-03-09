@@ -7,12 +7,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Users</h4>
+                        <h4 class="page-title">{{__('Users')}}</h4>
                         <div class="ml-auto">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('dash') }}">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a>Users</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('dash') }}">{{__('Dashboard')}}</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a>{{__('Users')}}</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -62,14 +62,13 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>UserName</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Gender</th>
-                                                <th>Contact</th>
-
-                                                <th>Role</th>
+                                                <th>{{__('Username') }}</th>
+                                                <th>{{__('Firstname')}}</th>
+                                                <th>{{__('Lastname')}}</th>
+                                                <th>{{__('E-mail')}}</th>
+                                                <th>{{__('Gender')}}</th>
+                                                <th>{{__('Contact')}}</th>
+                                                <th>{{__('Role')}}</th>
 
                                                 <th>Actions</th>
                                                
@@ -106,14 +105,15 @@
                                         <tfoot>
                                             <tr>
                                                 <th>#</th>
-                                                <th>UserName</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Gender</th>
-                                                <th>Contact</th>
-                                                <th>Role</th>
+                                                <th>{{__('Username') }}</th>
+                                                <th>{{__('Firstname')}}</th>
+                                                <th>{{__('Lastname')}}</th>
+                                                <th>{{__('E-mail')}}</th>
+                                                <th>{{__('Gender')}}</th>
+                                                <th>{{__('Contact')}}</th>
+                                                <th>{{__('Role')}}</th>
                                                 <th>Actions</th>
+                                               
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -136,19 +136,19 @@
         <div class="modal-content">
             <div class="modal-header">
                 
-                <h5 class="modal-title">Delete Confirmation</h5>
+                <h5 class="modal-title">{{__('Delete Confirmation')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
             </div>
             <div class="modal-body">
                 <input type="hidden" name="deleteUserid" id="deleteUserid">
-                <h5 >Are you sure want to delete?</h5>
+                <h5 >{{__('Qestion Delete')}}</h5>
             </div>
             <div class="modal-footer">
                
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit"  class="btn btn-danger">Deleted</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                <button type="submit"  class="btn btn-danger">{{__('Delete')}}</button>
             </div>
         </div>
         </form>

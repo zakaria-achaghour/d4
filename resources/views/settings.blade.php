@@ -7,7 +7,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Settings Profile</h4>
+                        <h4 class="page-title">{{__('Account Setting')}}</h4>
                        
                     </div>
                 </div>
@@ -42,75 +42,26 @@
                     <div class="card-body col-md-8 mx-auto">
                         
                         <h6 class="card-subtitle"></h6>
-                        <form id="account-form" method="POST" action="{{ route('profile_edit') }}" class="m-t-40">
+                        <form id="account-form" method="POST" action="{{ route('settings') }}" class="m-t-40">
                             @csrf
                            @method('PUT')
                                
-                           <div class="row">
-                            <div class="col-md-6">
-                                <label for="firstname">First name *</label>
-                                <input id="firstname" name="firstname" type="text" value="{{ $user->firstname }}" autocomplete="false" class="required form-control" disabled >
-                            </div>
-                            <div class="col-md-6">
-                                <label for="lastname">Last name *</label>
-                              <input id="lastname" name="lastname" type="text" value="{{ $user->lastname }}" autocomplete="false" class="required form-control" disabled >
-                             </div>
-
-                        </div>
+                         
                            
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                  
-                            <label for="username">UserName *</label>
-                            <input id="username" name="username" type="text" value="{{ $user->username }}"autocomplete="false" class="required  form-control" disabled>
-                            
+                                <div class="from-group">
+                                    <label for="language">Language</label>
+                                    <select name="locale" id="language" class="form-control mb-3">
+                                      @foreach(App\User::LOCALES as $locale => $label)
+                                         <option value="{{ $locale }}" {{ $user->locale === $locale ? 'selected' : '' }} >{{ $label }}</option>
+                                      @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
                                 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                          
-                                    <label for="email">Email *</label>
-                                    <input id="email" name="email" type="text" value="{{ $user->email }}"autocomplete="false" class="required email form-control" disabled>
-                                    
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="current_password">Current Password *</label>
-                                    <span id="pwdchk"></span>
-                                    <input id="current_password" name="current_password" type="password" class="required form-control">
-                                    
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="new_password">New Password *</label>
-                                    <input id="new_password" name="new_password" type="password" class="required form-control">
-                                   
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="confirm_password">Confirm Password *</label>
-                                            <input id="confirm_password" name="confirm_password" type="password" class="required form-control">
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                                     
-                                   
+                                
                               
                                    
                                 
@@ -118,7 +69,7 @@
                         
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12 mx-auto">
-                                        <button type="submit" class="btn btn-warning btn-sm mt-1" style="width: 100%">Update</button>
+                                        <button type="submit" class="btn btn-warning btn-sm mt-1" style="width: 100%">{{__('Update')}}</button>
                                     </div>
                                    
                                    
