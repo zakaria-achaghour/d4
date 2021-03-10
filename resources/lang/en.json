@@ -20,8 +20,13 @@
     "Users": "Users",
     "Add User": "Add user",
     "Edit User": "Edit user",
-
     "List Of Users": "List of users",
+
+
+    "Cities":"Cities",
+    "Add City": "Add City",
+    "Edit City": "Edit city",
+    "List Of Cities": "List of cities",
 
 
 
@@ -51,6 +56,7 @@
     "Firstname Here":"Firstname here",
     "Lastname":"Lastname",
     "Lastname Here":"Lastname here",
+    "Name": "Name",
 
     "Gender":"Gender",
     "Contact": "Contact",

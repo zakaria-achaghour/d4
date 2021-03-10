@@ -77,6 +77,9 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
+            <div>
+                
+            </div>
           @include('layouts.dashboard.footer')
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -221,6 +224,23 @@
          $('#deleteUserid').val(id[0]);
         
     });
+
+// villes table
+    $('#villes-table').DataTable( {
+        language: {
+            url: "/lang/javascript/datatables"
+        }
+    } );
+    // start confirmation delete users table 
+    $('#villes-table').on('click','.deleteVille',function(){
+       
+       $tr = $(this).closest('tr');
+       var id = $tr.children("td").map(function() {
+           return $(this).text();
+       }).get();
+       $('#deleteVilleid').val(id[0]);
+      
+  });
 
 
 

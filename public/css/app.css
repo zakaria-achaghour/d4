@@ -1,12 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
-
-.error {
-  border-color: #f62d51;
-  color: #f62d51
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
-.success {
-  border-color: #2df6a2;
-    color: #2df6a2
-}
+
+

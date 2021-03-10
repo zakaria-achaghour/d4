@@ -22,6 +22,11 @@
     "Edit User": "Modifier l'utilisateur",
     "List Of Users": "Liste des utilisateurs",
 
+    "Cities":"Villes",
+    "Add City": "Ajouter une ville",
+    "Edit City": "Modifier la ville",
+    "List Of Cities": "Liste des villes",
+
     "Delete Confirmation": "Confirmation de suppression",
     "Qestion Delete" : "Voulez-vous vraiment supprimer ?",
 
@@ -45,6 +50,8 @@
     "Firstname Here":"Prénom ici",
     "Lastname":"Nom",
     "Lastname Here":"Nom ici",
+    "Name": "Nom",
+
 
     "Gender":"Genre",
     "Contact": "Contact",

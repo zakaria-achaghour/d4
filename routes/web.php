@@ -25,16 +25,24 @@ Route::match(['get','put'],'/admin/dashboard/edit-profile','AdminController@prof
 
 // settings profile
 Route::match(['get','put'],'/admin/dashboard/settings','AdminController@settings')->name('settings');
-// check the user
+// check the user password
 Route::post('/admin/dashboard/check-pwd','AdminController@checkPassword')->name('checkPassword');
 
+// users routes
 Route::resource('/admin/dashboard/users','UserController')->except('destroy')->middleware(['can:admin.manage']);
 Route::post('/admin/dashboard/users/delete','UserController@destroy')->name('users.destroy')->middleware(['can:admin.manage']);
+
+
+
+// villles
+Route::resource('/admin/dashboard/villes','VilleController')->except('destroy')->middleware(['can:admin.manage']);
+Route::post('/admin/dashboard/villes/delete','UserController@destroy')->name('villes.destroy')->middleware(['can:admin.manage']);
+
+
+
 
 
 // javascripts lang routes 
 Route::get('/lang/javascript/{item}',function($item){
     return trans('javascript.'.$item);
 });
-
-//Auth::routes();
