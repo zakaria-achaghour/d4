@@ -81,4 +81,14 @@ class User extends Authenticatable
          
     }
 
+
+
+
+    /** Relation ship */
+
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
+
 }

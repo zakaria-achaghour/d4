@@ -9,14 +9,12 @@
                             class="hide-menu">{{ __('Dashboard') }}</span></a></li>
                
            @can('admin.manage', Auth::user())
-               
-           
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
                         href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span
                             class="hide-menu">{{__('Users')}} </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item"><a href="{{ route('users.index') }}" class="sidebar-link"><i
-                                    class="mdi mdi-account-switch"></i><span class="hide-menu"> {{__('List Of Users')}}
+                                    class="fas fa-list"></i><span class="hide-menu"> {{__('List Of Users')}}
                                 </span></a></li>
                         <li class="sidebar-item"><a href="{{ route('users.create') }}" class="sidebar-link"><i
                                     class="mdi mdi-account-plus"></i><span class="hide-menu"> {{__('Add User')}}
@@ -27,18 +25,31 @@
 
 
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
-                    href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span
+                    href="javascript:void(0)" aria-expanded="false"><i class="fas fa-building"></i><span
                         class="hide-menu">{{__('Cities')}} </span></a>
                 <ul aria-expanded="false" class="collapse  first-level">
                     <li class="sidebar-item"><a href="{{ route('villes.index') }}" class="sidebar-link"><i
-                                class="mdi mdi-account-switch"></i><span class="hide-menu"> {{__('List Of Cities')}}
+                                class="fas fa-list"></i><span class="hide-menu"> {{__('List Of Cities')}}
                             </span></a></li>
                     <li class="sidebar-item"><a href="{{ route('villes.create') }}" class="sidebar-link"><i
-                                class="mdi mdi-account-plus"></i><span class="hide-menu"> {{__('Add City')}}
+                                class="fas fa-plus"></i><span class="hide-menu"> {{__('Add City')}}
                             </span></a></li>
                 </ul>
             </li>
                 @endcan
+
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                    href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-pharmacy"></i><span
+                        class="hide-menu">{{__('Client')}} </span></a>
+                <ul aria-expanded="false" class="collapse  first-level">
+                    <li class="sidebar-item"><a href="{{ route('clients.index') }}" class="sidebar-link"><i
+                                class="fas fa-list"></i><span class="hide-menu"> {{__('List Of Clients')}}
+                            </span></a></li>
+                    <li class="sidebar-item"><a href="{{ route('clients.create') }}" class="sidebar-link"><i
+                                class="fas fa-plus"></i><span class="hide-menu"> {{__('Add Client')}}
+                            </span></a></li>
+                </ul>
+            </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

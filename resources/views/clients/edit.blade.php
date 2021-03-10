@@ -31,11 +31,11 @@
 
             <div class="card row my-2">
                 <div class="card-body col-md-8 mx-auto">
-                    <form  method="POST" action="{{ route('villes.update',['ville'=> $ville]) }}" >
+                    <form  method="POST" action="{{ route('users.update',['user'=>$user]) }}" >
                         @csrf
                         @method('PUT')
                    
-                        @include('admin.villes._form')
+                        @include('admin.users._form')
                    
                    
                 <div class="border-top">

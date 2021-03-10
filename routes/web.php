@@ -36,7 +36,13 @@ Route::post('/admin/dashboard/users/delete','UserController@destroy')->name('use
 
 // villles
 Route::resource('/admin/dashboard/villes','VilleController')->except('destroy')->middleware(['can:admin.manage']);
-Route::post('/admin/dashboard/villes/delete','UserController@destroy')->name('villes.destroy')->middleware(['can:admin.manage']);
+Route::post('/admin/dashboard/villes/delete','VilleController@destroy')->name('villes.destroy')->middleware(['can:admin.manage']);
+
+
+
+// Clients
+Route::resource('/admin/dashboard/clients','ClientController')->except('destroy');
+Route::post('/admin/dashboard/clients/delete','ClientController@destroy')->name('clients.destroy');
 
 
 

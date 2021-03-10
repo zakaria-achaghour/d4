@@ -77,10 +77,10 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <div>
-                
+            <div class="footer">
+
+                @include('layouts.dashboard.footer')
             </div>
-          @include('layouts.dashboard.footer')
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -243,6 +243,37 @@
   });
 
 
+  // Clients table
+  $('#clients-table').DataTable( {
+        language: {
+            url: "/lang/javascript/datatables"
+        }
+    } );
+    // start confirmation delete users table 
+    $('#clients-table').on('click','.deleteClient',function(){
+       
+       $tr = $(this).closest('tr');
+       var id = $tr.children("td").map(function() {
+           return $(this).text();
+       }).get();
+       $('#deleteClientid').val(id[0]);
+      
+  });
+
+
+  /*
+    function show field motif
+  */
+  $(document).ready(function(){
+    $("#showMotif").hide();
+      
+  $("#bloque").click(function(){
+    $("#showMotif").show();
+  });
+  $("#debloque").click(function(){
+    $("#showMotif").hide();
+  });
+});
 
 </script>
 <script src="{{ asset('js/app.js') }}"></script>

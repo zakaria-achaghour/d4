@@ -85,7 +85,7 @@
 <div class="form-group row">
     <label class="col-md-3 mt-3" for="role">{{__('Select Role')}}</label>
     <div class="col-sm-9">
-        <select class="select2 form-select shadow-none form-control @error('role') is-invalid @enderror id="role" name="role"
+        <select class="select2 form-select shadow-none form-control @error('role') is-invalid @enderror" id="role" name="role"
             style="width: 100%; height:36px;"  >
             
            @foreach (App\User::ROLES as $role => $label)

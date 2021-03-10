@@ -27,6 +27,11 @@
     "Edit City": "Modifier la ville",
     "List Of Cities": "Liste des villes",
 
+    "Clients":"Clients",
+    "Add Client": "Ajouter un client",
+    "Edit Client": "Modifier le client",
+    "List Of Clients": "Liste des clients",
+
     "Delete Confirmation": "Confirmation de suppression",
     "Qestion Delete" : "Voulez-vous vraiment supprimer ?",
 

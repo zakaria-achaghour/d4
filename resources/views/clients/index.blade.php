@@ -7,12 +7,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">{{__('Cities')}}</h4>
+                        <h4 class="page-title">{{__('Clients')}}</h4>
                         <div class="ml-auto">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('dash') }}">{{__('Dashboard')}}</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a>{{__('Cities')}}</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a>{{__('Clients')}}</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -58,28 +58,39 @@
 
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="villes-table" class="table table-striped table-bordered">
+                                    <table id="clients-table" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th>{{__('Name') }}</th>
+                                                <th>{{__('City')}}</th>
+                                                <th>Type</th>
+                                               <th>Patente</th>
+                                               <th>ICE</th>
+                                               <th>IF</th>
+                                               <th>Autorisation</th>
+                                               <th>RC</th>
+                                               <th>Adress</th>
+                                               <th>Pharmacien</th>
+                                               <th>Contact</th>
+                                               <th>Cin</th>
+
+
                                                 <th>Actions</th>
                                                
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($villes as $ville)
+                                            @foreach ($clients as $client)
                                             <tr>
                                             
-                                                <td>{{ $ville->id }}</td>
-                                                <td>{{ $ville->nom }}</td>
-                                               
+                                                
                                                 <td>
                                                     
-                                                    <a href="{{ route('villes.edit',['ville'=>$ville->id]) }}" class="btn btn-outline-warning my-1"><i
+                                                    <a href="{{ route('clients.edit',['client'=>$client->id]) }}" class="btn btn-outline-warning my-1"><i
                                                         class="fas fa-edit"></i></a>
                                                        
-                                                            <a href="javascript:void(0);" class="btn btn-outline-danger deleteVille" data-toggle="modal" data-target="#villeConfirm"><i
+                                                            <a href="javascript:void(0);" class="btn btn-outline-danger deleteClient" data-toggle="modal" data-target="#clientConfirm"><i
                                                                 class="fas fa-trash-alt"></i></a>
                                                             
                                                 </td>
@@ -93,7 +104,19 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>{{__('Name') }}</th>
-                                               
+                                                <th>{{__('City')}}</th>
+                                                <th>Type</th>
+                                               <th>Patente</th>
+                                               <th>ICE</th>
+                                               <th>IF</th>
+                                               <th>Autorisation</th>
+                                               <th>RC</th>
+                                               <th>Adress</th>
+                                               <th>Pharmacien</th>
+                                               <th>Contact</th>
+                                               <th>Cin</th>
+
+
                                                 <th>Actions</th>
                                                
                                             </tr>
@@ -110,9 +133,9 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="villeConfirm" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="clientConfirm" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form  action="{{ route('villes.destroy') }}" id="form-delete-ville" method="post">
+        <form  action="{{ route('clients.destroy') }}" id="form-delete-client" method="post">
             @csrf
             
         <div class="modal-content">
@@ -124,7 +147,7 @@
                     </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" name="deleteVilleid" id="deleteVilleid">
+                <input type="hidden" name="deleteClientid" id="deleteClientid">
                 <h5 >{{__('Qestion Delete')}}</h5>
             </div>
             <div class="modal-footer">

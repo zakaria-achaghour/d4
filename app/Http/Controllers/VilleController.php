@@ -40,7 +40,17 @@ class VilleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|min:3|unique:villes'
+        ]);
+
+        $ville = new Ville();
+        $ville->nom = $request->input('nom');
+        $ville->save();
+         
+        return redirect()->route('villes.index')->with(['success' => 'Ville ajouté ']);
+
+
     }
 
     /**
@@ -62,7 +72,8 @@ class VilleController extends Controller
      */
     public function edit(Ville $ville)
     {
-        //
+        return view('admin.villes.edit',['ville'=>$ville]);
+        
     }
 
     /**
@@ -74,7 +85,13 @@ class VilleController extends Controller
      */
     public function update(Request $request, Ville $ville)
     {
-        //
+        $request->validate([
+            'nom' => 'required|min:3|unique:villes'
+        ]);
+        $ville->nom =$request->input('nom');
+        $ville->save();
+        return redirect()->route('villes.index')->with(['success' => 'Ville mise à jour  ']);
+
     }
 
     /**
@@ -83,8 +100,15 @@ class VilleController extends Controller
      * @param  \App\Ville  $ville
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ville $ville)
+    public function destroy(Request $request)
     {
-        //
+        $ville =Ville::findOrFail((int) $request->input('deleteVilleid'));
+        $ville->delete();
+
+        
+      
+
+        return redirect()->route('villes.index')->with(['success' => 'Ville supprimé ']);
+
     }
 }
