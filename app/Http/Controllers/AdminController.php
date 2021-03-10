@@ -18,13 +18,13 @@ class AdminController extends Controller
 
     public function login(Request $request){
         if($request->isMethod('post')){
-            if(Auth::attempt(['email' => $request->input('login'),'password'=>$request->input('password')])){
+            if(Auth::attempt(['username' => $request->input('login'),'password'=>$request->input('password')])){
                return redirect()->route('dash');
                
             }
             else {
          
-                return redirect()->route('login')->with(['error' => 'invalide Username or password!!']);
+                return redirect()->route('login')->with(['error' => "invalide Nom d'utilisateur ou mot de passe !!"]);
             }
         }
        
@@ -35,7 +35,7 @@ class AdminController extends Controller
     public function logout(){
 
         Session::flush();
-        return redirect()->route('login')->with(['success' => 'logout succefuly']);
+        return redirect()->route('login');
     }
 
     public function dash(){
@@ -50,10 +50,38 @@ class AdminController extends Controller
      * Edite Profile 
      * 
      */
-
+/**--------------------------------------------------------------------------
+ * --------------------------------------------------------------------------
+ */
      // method return view
-    public function edit_profile(){
-        
+    public function profile_edit(Request $request){
+        if($request->isMethod('put')){
+            $request->validate([
+                'firstname' => 'required|min:3',
+                'lastname' => 'required|min:3',
+                'email' => 'required|email',
+                'username' =>'required|min:3',
+                'current_password' => ['required', new MatchOldPassword],
+                'new_password'=> 'required|min:8',
+                'confirm_password' => 'required|same:new_password'
+            ]);
+          
+          $user = User::findOrFail(Auth::id());
+            $data = $request->all();
+            $current_password = $data['current_password'];
+           
+            if(Hash::check($current_password,$user->password)){
+                if( $data['new_password'] === $data['confirm_password']){
+                    $user->password = Hash::make($data['new_password']);
+                    $user->save();
+                   return redirect()->route('profile_edit');
+                }
+              
+            }
+            return redirect()->route('profile_edit');
+    
+        }
+
         return view('edit_profile',['user'=> Auth::user()]);
     }
 
@@ -71,53 +99,30 @@ class AdminController extends Controller
     }
 
 
-    // methods post 
-    public function profile_edit(Request $request ){
+  
 
-        $request->validate([
-            'firstname' => 'required|min:3',
-            'lastname' => 'required|min:3',
-            'email' => 'required|email',
-            'username' =>'required|min:3',
-            'current_password' => ['required', new MatchOldPassword],
-            'new_password'=> 'required|min:8',
-            'confirm_password' => 'required|same:new_password'
-        ]);
-      
-      $user = User::findOrFail(Auth::id());
-        $data = $request->all();
-        $current_password = $data['current_password'];
-       
-        if(Hash::check($current_password,$user->password)){
-            if( $data['new_password'] === $data['confirm_password']){
-                $user->password = Hash::make($data['new_password']);
-                $user->save();
-               return redirect()->route('edit-profile')->with(['success' => 'Password change successfuly']);
-            }
-            return redirect()->route('edit-profile')->with(['error' => 'New password not equal to confirm password']);
-          
-        }
-        return redirect()->route('edit-profile')->with(['error' => 'current password not correct']);
+/**=============================================================== */
+/**=============================================================== */
+// Account Settings
+/**=============================================================== */
 
 
-    }
-
-
-
-
-// change language
-    public function settings_get(){
-        return view('settings',['user'=> Auth::user()]);
-
-    }
+ 
+ 
 
     public function settings(Request $request){
-        
+        if($request->isMethod('put')){
+
        $user = User::findOrFail(Auth::id());
        $user->locale = $request->input('locale');
        $user->save();
-       return redirect()->route('settings')->with(['success' => 'language change successfuly']);
 
+       return redirect()->route('settings');
+        }
+
+
+
+        return view('settings',['user'=> Auth::user()]);
 
     }
     

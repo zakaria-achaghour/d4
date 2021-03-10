@@ -205,8 +205,12 @@
      /****************************************
       *       Basic Table                   *
       ****************************************/
-     $('#users-table').DataTable();
-
+    
+     $('#users-table').DataTable( {
+        language: {
+            url: "/lang/javascript/datatables"
+        }
+    } );
      // start confirmation delete users table 
     $('#users-table').on('click','.deleteUser',function(){
        

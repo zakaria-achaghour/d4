@@ -51,7 +51,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="from-group">
-                                    <label for="language">Language</label>
+                                    <label for="language">{{__('Language')}}</label>
                                     <select name="locale" id="language" class="form-control mb-3">
                                       @foreach(App\User::LOCALES as $locale => $label)
                                          <option value="{{ $locale }}" {{ $user->locale === $locale ? 'selected' : '' }} >{{ $label }}</option>

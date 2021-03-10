@@ -103,7 +103,7 @@
 
                     <div class="dropdown-menu dropdown-menu-right  user-dd animated" aria-labelledby="navbarDropdow">
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{route('edit-profile')}}"><i
+                        <a class="dropdown-item" href="{{route('profile_edit')}}"><i
                             class="fas fa-edit me-1 ms-1"></i> {{__('Edit Profile')}}</a>
 
                         <div class="dropdown-divider"></div>
