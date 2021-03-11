@@ -41,17 +41,19 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
+        
         $request->validate([
-            'pharmacien' => 'required|min:3',
+            'pharmacien' => 'required',
             'cin' => 'required',
             'contact' => 'required',
 
-            'nom' => 'required|min:3',
-            'patente' => 'unique:Clients',
-            'ice' => 'unique:Clients',
-            'i_f' => 'unique:Clients',
-            'rc' => 'unique:Clients',
-            'autorisation' => 'unique:Clients',
+            'nom' => 'required',
+            'patente' => 'unique:Clients,patente,Null,id',
+            'ice' => 'unique:Clients,ice,Null,id',
+            'i_f' => 'unique:Clients,i_f,Null,id',
+            'rc' => 'unique:Clients,rc,Null,id',
+            'autorisation' => 'unique:Clients,autorisation,Null,id',
 
             'ville' => 'required',
             'adress' => 'required|min:4',
@@ -61,6 +63,7 @@ class ClientController extends Controller
             $client->pharmacien = $request->input('pharmacien');
             $client->cin = $request->input('cin');
             $client->contact = $request->input('contact');
+            $client->type = (int)$request->input('type');
 
             $client->nom = $request->input('nom');
             $client->patente = $request->input('patente');
@@ -75,7 +78,7 @@ class ClientController extends Controller
             $client->fichier_cin=(int)$request->input('fichier_cin');
             $client->fichier_diplome=(int)$request->input('fichier_diplome');
             $client->fichier_autorisation=(int)$request->input('fichier_autorisation');
-            $client->fichier_rc_patent=(int)$request->input('fichier_rc_patent');
+            $client->fichier_rc_patente=(int)$request->input('fichier_rc_patente');
             $client->fichier_if_ice=(int)$request->input('fichier_if_ice');
 
 
@@ -83,18 +86,21 @@ class ClientController extends Controller
 
 
             $client->user_id = Auth::id();
-             // Upload Picture for current Post
-            if($request->hasFile('picture')) {
+            $client->updated_by = Auth::id();
+            $client->fichier = $request->input('fichier');
+
+            //  // Upload Picture for current Post
+            // if($request->hasFile('fichier')) {
             
-                $path = $request->file('fichier')->store('clients');
+            //     $path = $request->file('fichier')->store('clients');
                 
                 
 
-                $client->fichier = $path;
-            }
+            //     $client->fichier = $path;
+            // }
 
             $client->save();
-            
+
 
 
 

@@ -5,12 +5,30 @@
             <div class="card-header bg-primary text-white">Informations Pharmacien</div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="pharmacien"> Nom Et Prenom:</label>
                             <input type="text" class="form-control @error('pharmacien') is-invalid @enderror" name="pharmacien" id="pharmacien"
-                            value="{{ old('nom', $client->pharmacien ?? null) }}"  autofocus >
+                            value="{{ old('pharmacien', $client->pharmacien ?? null) }}"  autofocus >
                             @error('pharmacien')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                             @enderror
+                        </div>
+                       
+                    </div>
+                    <div class="col-md-6">
+                      
+                            <div class="form-group">
+                                <label for="type"> Type:</label>
+                              <select class="form-control @error('type') is-invalid @enderror" name="type" id="type">
+                                <option value="1" selected>Pharmacie</option>
+                                <option value="0">Groupe</option>
+                               
+                              </select>
+                         
+                            @error('type')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -226,7 +244,7 @@
                                 Autorisation
                               </label>
                           <label class="form-check-label mr-5">
-                            <input type="checkbox" class="form-check-input" name="fichier_rc_patent" id="fichier_rc_patent" value="1">
+                            <input type="checkbox" class="form-check-input" name="fichier_rc_patente" id="fichier_rc_patente" value="1">
                             RC et PATENTE
                           </label>
 

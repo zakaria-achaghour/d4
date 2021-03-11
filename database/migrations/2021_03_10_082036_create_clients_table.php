@@ -18,26 +18,26 @@ class CreateClientsTable extends Migration
             $table->string('nom');
             $table->foreignId('ville_id');
             $table->boolean('type');
-            $table->string('patente',100);
-            $table->string('ice',100);
-            $table->string('i_f',100);
-            $table->string('autorisation',100);
-            $table->string('rc',100);
-            $table->longText('adress');
+            $table->string('patente',100)->nullable();
+            $table->string('ice',100)->nullable();
+            $table->string('i_f',100)->nullable();
+            $table->string('autorisation',100)->nullable();
+            $table->string('rc',100)->nullable();
+            $table->longText('adress')->nullable();
 
             $table->string('pharmacien',150);
-            $table->string('contact',50);
-            $table->string('cin',10);
+            $table->string('contact',50)->nullable();
+            $table->string('cin',10)->nullable();
 
-            $table->string('fichier');
-            $table->boolean('fichier_cin');
-            $table->boolean('fichier_diplome');
-            $table->boolean('fichier_autorisation');
-            $table->boolean('fichier_rc_patente');
-            $table->boolean('fichier_if_ice');
+            $table->string('fichier')->nullable();
+            $table->boolean('fichier_cin')->default(0);
+            $table->boolean('fichier_diplome')->default(0);
+            $table->boolean('fichier_autorisation')->default(0);
+            $table->boolean('fichier_rc_patente')->default(0);
+            $table->boolean('fichier_if_ice')->default(0);
 
             $table->boolean('bloque');
-            $table->longText('motif');
+            $table->longText('motif')->nullable();
             $table->foreignId('user_id');
             $table->integer('updated_by');
             $table->timestamps();
