@@ -23,8 +23,8 @@
                             <div class="form-group">
                                 <label for="type"> Type:</label>
                               <select class="form-control @error('type') is-invalid @enderror" name="type" id="type">
-                                <option value="1" selected>Pharmacie</option>
-                                <option value="0">Groupe</option>
+                                <option value="1" {{ $client->type === 1 ? 'selected':'' }}>Pharmacie</option>
+                                <option value="0" {{ $client->type === 0 ? 'selected':'' }}>Groupe</option>
                                
                               </select>
                          
@@ -176,7 +176,7 @@
                             <select class="form-control @error('ville') is-invalid @enderror" name="ville" id="ville"  >
                                 <option value=""></option>
                                 @foreach ($villes as $ville)
-                                 <option value="{{ $ville->id }}" {{ old('ville') === $ville ? 'selected':'' }} >{{ $ville->nom }}</option>
+                                 <option value="{{ $ville->id }}" {{ $client->ville->id === $ville->id ? 'selected':'' }} >{{ $ville->nom }}</option>
                                     
                                 @endforeach
                             </select>
@@ -226,12 +226,12 @@
                     <div class="col-md-12 mb-2">
                        <div class="form-check ">
                          <label class="form-check-label ml-0">
-                           <input type="checkbox" class="form-check-input" name="fichier_cin" id="fichier_cin" value="1">
+                           <input type="checkbox" class="form-check-input" name="fichier_cin" id="fichier_cin" value="1" {{ $client->fichier_cin == 1 ? 'checked' : '' }}>
                            CIN Pharmacien
                          </label>
 
                          <label class="form-check-label ml-5">
-                            <input type="checkbox" class="form-check-input" name="fichier_diplome" id="fichier_diplome" value="1">
+                            <input type="checkbox" class="form-check-input" name="fichier_diplome" id="fichier_diplome" value="1" {{ $client->fichier_diplome == "1" ? 'checked' : '' }}>
                             Diplome Pharmacien
                           </label>
 
@@ -240,16 +240,16 @@
                        <div class="col-md-12">
                         <div class="form-check ">
                             <label class="form-check-label mr-5">
-                                <input type="checkbox" class="form-check-input" name="fichier_autorisation" id="fichier_autorisation" value="1">
+                                <input type="checkbox" class="form-check-input" name="fichier_autorisation" id="fichier_autorisation" value="1" {{ $client->fichier_autorisation == 1 ? 'checked' : '' }}>
                                 Autorisation
                               </label>
                           <label class="form-check-label mr-5">
-                            <input type="checkbox" class="form-check-input" name="fichier_rc_patente" id="fichier_rc_patente" value="1">
+                            <input type="checkbox" class="form-check-input" name="fichier_rc_patente" id="fichier_rc_patente" value="1" {{ $client->fichier_rc_patente == 1 ? 'checked' : '' }}>
                             RC et PATENTE
                           </label>
 
                           <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="fichier_if_ice" id="fichier_if_ice" value="1">
+                            <input type="checkbox" class="form-check-input" name="fichier_if_ice" id="fichier_if_ice" value="1" {{ $client->fichier_if_ice == 1 ? 'checked' : '' }}>
                             IF et ICE
                           </label>
                        </div>
@@ -272,13 +272,13 @@
     
     <div class="form-check">
         <label class="form-check-label">
-        <input type="radio" class="form-check-input" id="bloque" onclick="showHide(1);" name="bloque"  value="1" >
+        <input type="radio" class="form-check-input" id="bloque" onclick="showHide(1);" name="bloque"  value="1" value="1" {{ $client->bloque == 1 ? 'checked' : '' }} >
         Bloque
       </label>
     </div>
     <div class="form-check">
         <label class="form-check-label">
-        <input type="radio" class="form-check-input" id="debloque" onclick="showHide(0);" name="bloque"  value="0" checked>
+        <input type="radio" class="form-check-input" id="debloque" onclick="showHide(0);" name="bloque"  value="0" value="1" {{ $client->bloque == 0 ? 'checked' : '' }}>
         Debloque
       </label>
     </div>

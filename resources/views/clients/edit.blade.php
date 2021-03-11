@@ -30,12 +30,12 @@
             <!-- ============================================================== -->
 
             <div class="card row my-2">
-                <div class="card-body col-md-8 mx-auto">
-                    <form  method="POST" action="{{ route('users.update',['user'=>$user]) }}" >
+                <div class="card-body ">
+                    <form  method="POST" action="{{ route('clients.update',['client'=>$client]) }}"  enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                    
-                        @include('admin.users._form')
+                        @include('clients._form')
                    
                    
                 <div class="border-top">
