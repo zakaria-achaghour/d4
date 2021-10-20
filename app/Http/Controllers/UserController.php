@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index',['users'=>User::all()]);
+        return view('admin.users.index',['users'=>User::withTrashed()->get()]);
     }
 
     /**
@@ -126,5 +126,12 @@ class UserController extends Controller
         $user= User::findOrFail($id);
         $user->delete();
         return redirect()->back()->with(['success' => 'User deleted']);
+    }
+
+
+    public function restore($id) {
+        $user = User::onlyTrashed()->where('id', $id)->first();
+        $user->restore();
+        return redirect()->back();
     }
 }

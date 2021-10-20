@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Client;
-use App\Http\Requests\ClientRequest;
+use App\Http\Requests\client\StoreClientRequest;
+use App\Http\Requests\client\UpdateClientRequest;
 use App\Ville;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,6 +32,7 @@ class ClientController extends Controller
      */
     public function create()
     {
+        
         return view('clients.create', ['villes' => Ville::all()]);
     }
 
@@ -40,13 +42,13 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClientRequest  $request)
+    public function store(StoreClientRequest  $request)
     {
         //dd($request);
+        $client = new Client();
 
         $validated = $request->validated();
 
-        $client = new Client();
         $client->pharmacien = $request->input('pharmacien');
         $client->cin = $request->input('cin');
         $client->contact = $request->input('contact');
@@ -80,12 +82,13 @@ class ClientController extends Controller
         if ($request->hasFile('fichier')) 
         {
             $file = $request->file('fichier');
-             $path =  $file->storeAs('Documents',$client->id.'.'.$file->guessClientExtension());
-             $path = Storage::url($path);
-             $client->fichier = $path;
+            $file = $file->storeAs('Documents',$client->pharmacien.'.'.$file->guessClientExtension());
+             $client->fichier = $file;
         }
          
         $client->save();
+        return redirect()->route('clients.index')->with(['success' => 'Client added']);
+
     }
 
     /**
@@ -106,7 +109,9 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Client $client)
+    
     {
+        
         return view('clients.edit', ['villes' => Ville::all(),'client'=>$client]);
     }
 
@@ -118,8 +123,9 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientRequest $request, Client $client)
+    public function update(UpdateClientRequest $request, Client $client)
     {
+       // dd($request);
         $validated = $request->validated();
         $client->pharmacien = $request->input('pharmacien');
         $client->cin = $request->input('cin');
@@ -146,27 +152,29 @@ class ClientController extends Controller
         $client->bloque = $request->input('bloque');
         $client->updated_by = Auth::id();
         
+
        
-        // Upload Picture for current Post
-        if ($request->hasFile('fichier')) 
-        {
+         // Upload Picture for current Post
+         if ($request->hasFile('fichier')) 
+         {
             $file =  $request->file('fichier')
-                             ->storeAs('Documents',$client->id.'.'.$request->file('fichier')
-                             ->guessClientExtension());
+                              ->store('Documents');
 
             $path = Storage::url($file);
 
-            if($client->fichier){
+             if($client->fichier){
 
-                Storage::delete($client->fichier);
-                $client->fichier = $path;
-            }
-            else{
-                $client->fichier = $path;
-            }
-        }
+                 Storage::delete($client->fichier);
+                   $client->fichier = $path;
+             }
+             else{
+                 $client->fichier = $path;
+             }
+         }
          
         $client->save();
+        return redirect()->route('clients.index')->with(['success' => 'Client Updated']);
+
     }
 
     /**
@@ -178,5 +186,13 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         //
+    }
+
+
+    // download fichier
+    public function download($file)
+    {
+        return Storage::download($file);
+        
     }
 }

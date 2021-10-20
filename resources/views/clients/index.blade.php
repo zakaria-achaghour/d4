@@ -72,7 +72,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($clients as $client)
+                        @forelse($clients as $client)
                             <tr>
                                 <td>{{ $client->id }}</td>
                                 <td>{{ $client->nom }}</td>
@@ -86,17 +86,28 @@
 
                                 <td>
 
+                                    @if ($client->fichier)
+                                    <a href="{{ url('/storage/'.$client->fichier) }}"
+                                     
+                                        target="_blank"
+                                        class="btn btn-outline-info my-1"><i class="fas fa-download"></i></a>
+
+                                    @endif
+                                  
                                     <a href="{{ route('clients.edit', ['client' => $client->id]) }}"
                                         class="btn btn-outline-warning my-1"><i class="fas fa-edit"></i></a>
 
                                     <a href="javascript:void(0);" class="btn btn-outline-danger deleteClient"
                                         data-toggle="modal" data-target="#clientConfirm"><i
                                             class="fas fa-trash-alt"></i></a>
+                                            
 
                                 </td>
 
-                            </tr>
-                        @endforeach
+                            </tr> 
+                             @empty
+                            
+                            @endforelse
 
 
                     </tbody>

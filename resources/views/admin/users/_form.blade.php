@@ -89,7 +89,7 @@
             style="width: 100%; height:36px;"  >
             
            @foreach (App\User::ROLES as $role => $label)
-           <option value=""></option>
+       
             <option value="{{ $role }}" {{ old('role') === $role ? 'selected':'' }} >{{ $label }}</option>
                
            @endforeach

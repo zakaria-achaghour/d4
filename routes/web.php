@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,7 @@ Route::post('/admin/dashboard/check-pwd','AdminController@checkPassword')->name(
 // users routes
 Route::resource('/admin/dashboard/users','UserController')->except('destroy')->middleware(['can:admin.manage']);
 Route::post('/admin/dashboard/users/delete','UserController@destroy')->name('users.destroy')->middleware(['can:admin.manage']);
-
+Route::patch('/admin/dashboard/users/{id}/restore', 'UserController@restore')->name('users.restore')->middleware(['can:admin.manage']);
 
 
 // villles
@@ -44,9 +45,10 @@ Route::post('/admin/dashboard/villes/delete','VilleController@destroy')->name('v
 Route::resource('/admin/dashboard/clients','ClientController')->except('destroy');
 Route::post('/admin/dashboard/clients/delete','ClientController@destroy')->name('clients.destroy');
 
+ // Route::get('/admin/dashboard/clients/download','ClientController@download')->name('clients.download');
 
-
-
+ Route::get('/storage','ClientController@download');
+ 
 
 // javascripts lang routes 
 Route::get('/lang/javascript/{item}',function($item){

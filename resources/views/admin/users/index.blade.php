@@ -94,6 +94,15 @@
                                                        
                                                             <a href="javascript:void(0);" class="btn btn-outline-danger deleteUser" data-toggle="modal" data-target="#userConfirm"><i
                                                                 class="fas fa-trash-alt"></i></a>
+                                                                @if($user->deleted_at)
+                                                                <form method="POST" class="fm-inline"
+                                                                action="{{ url('/admin/dashboard/users/'.$user->id.'/restore') }}">
+                                                                @csrf
+                                                                @method('PATCH')
+                                            
+                                                                <input type="submit" value="Restore!" class="btn btn-sm btn-success"/>
+                                                            </form>
+                                                            @endif
                                                             
                                                 </td>
 

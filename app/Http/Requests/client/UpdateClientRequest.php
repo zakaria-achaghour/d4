@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\client;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientRequest extends FormRequest
+class UpdateClientRequest extends FormRequest
 {
-  /**
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -27,14 +27,12 @@ class ClientRequest extends FormRequest
             'pharmacien' => 'required',
             'cin' => 'required',
             'contact' => 'required',
-
             'nom' => 'required',
-            'patente' => 'nullable|unique:Clients,patente,'.$this->client,
-            'ice' => 'nullable|unique:Clients,ice,'.$this->client,
-            'i_f' => 'nullable|unique:Clients,i_f,'.$this->client,
-            'rc' => 'nullable|unique:Clients,rc,null,'.$this->client,
-            'autorisation' => 'nullable|unique:Clients,autorisation,'.$this->client,
-
+            'patente' => 'nullable|unique:Clients,patente,'.$this->client->id,
+            'ice' => 'nullable|unique:Clients,ice,'.$this->client->id,
+            'i_f' => 'nullable|unique:Clients,i_f,'.$this->client->id,
+            'rc' => 'nullable|unique:Clients,rc,null,'.$this->client->id,
+            'autorisation' => 'nullable|unique:Clients,autorisation,'.$this->client->id,
             'ville' => 'required',
             'adress' => 'required|min:4',
         ];

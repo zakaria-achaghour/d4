@@ -35,7 +35,7 @@
                         @csrf
                         @method('PUT')
                    
-                        @include('clients._form')
+                        @include('clients._form_update')
                    
                    
                 <div class="border-top">
@@ -46,7 +46,7 @@
 
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <a href="{{ route('users.index') }}"  style="width: 100%" class="btn btn-outline-primary">{{__('Back')}}</a>
+                                <a href="{{ route('clients.index') }}"  style="width: 100%" class="btn btn-outline-primary">{{__('Back')}}</a>
                             </div>
                                     
                         </div>
